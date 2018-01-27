@@ -33,21 +33,25 @@ def check_product?(array,n)
 	This function takes two inputs, an array and an integer and returns true if it finds any three numbers such that the product is n
 	
 """
-	#count = 0
+	result = 0
 	array.sort!
 	return false unless array.length >= 3
-	(0 .. array.length-2).each do |x|
-		(x+1 .. array.length-1).each do |y|
-			(y+1..array.length).each do |z|
+	(0 .. array.length-3).each do |x|
+		(x+1 .. array.length-2).each do |y|
+			(y+1..array.length-1).each do |z|
 				if (array[x] * array[y] * array[z]) == n
-					return true
+					result = 1
 				else
-					return false
+					result = 0
 				end
 			end
 		end
 	end
-		
+	if result == 1
+		return true
+	else
+		return false
+	end
 end
 
 def concatenate_words(w1,w2)
@@ -58,6 +62,22 @@ def concatenate_words(w1,w2)
 	return w1 << " " << w2
 end
 
+def valid_parantheses?(s)
+	"""
+	This function takes an input string which contains different types of brackets and returns true if the brackets are matched.
+
+	"""	
+	return false if s.length < 2
+    brackets_hash = {"(" => ")", "{" => "}", "[" => "]"}
+    brackets = []
+    s.each_char do |x|
+      brackets.push(x) if brackets_hash.keys.include?(x)
+      brackets.pop if brackets_hash.values.include?(x)
+    end
+    return brackets.empty?
+end
+
+
 
 array = [1,2,3,4,5]
 double_elem([0,4,6,8,20])
@@ -65,5 +85,6 @@ double_elem([0,4,6,8,20])
 puts missing_num([])
 puts check_product?([1,2,6,8,10],120)
 puts concatenate_words("Saurabh", "Labde")
+puts valid_parantheses?("{()}")
 
 
