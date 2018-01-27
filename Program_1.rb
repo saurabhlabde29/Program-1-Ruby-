@@ -77,6 +77,17 @@ def valid_parantheses?(s)
     return brackets.empty?
 end
 
+def longest_common_prefix(s)
+	"""
+	This function takes an array of strings as an input and returns the longest string which is common in all the strings in an array.
+
+	"""
+	return '' if s.empty?
+  	min, max = s.minmax
+  	idx = min.size.times{ |i| break i if min[i] != max[i] }
+  	return min[0...idx]
+end
+
 
 
 array = [1,2,3,4,5]
@@ -86,5 +97,6 @@ puts missing_num([])
 puts check_product?([1,2,6,8,10],120)
 puts concatenate_words("Saurabh", "Labde")
 puts valid_parantheses?("{()}")
+puts longest_common_prefix([])
 
 
