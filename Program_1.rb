@@ -34,7 +34,6 @@ def check_product?(array,n)
 	
 """
 	result = 0
-	array.sort!
 	return false unless array.length >= 3
 	(0 .. array.length-3).each do |x|
 		(x+1 .. array.length-2).each do |y|
@@ -100,8 +99,16 @@ puts valid_parantheses?("{()}")
 puts longest_common_prefix(["Saurabh","Simran"])
 
 class Student 
+	"""
+	This class models each student having two attributes , i.e the name of the student and the time at which he came to class.
+
+	"""
 	attr_accessor :name, :arrival_time_at_classroom
 	def initialize(name, arrival_time_at_classroom)
+		"""
+		Constructor for initializing the instance variables
+
+		"""
 		raise ArgumentError.new("Name must not be nil") if name == nil or name == " " 
 		raise ArgumentError.new("Arrival time must not be nil") if arrival_time_at_classroom == nil
 		raise ArgumentError.new("Arrival time not entered in the correct format") unless arrival_time_at_classroom =~ /(\d{2}:\d{2})\s(am|pm)/
@@ -111,6 +118,10 @@ class Student
 	end
 
 	def arrive_on_time_for_class?
+		"""
+		This function returns true if the student arrived at the class on time or returns false.
+
+		"""
 		if @arrival_time_at_classroom =~ /(0[1-7]):([0-9]{2})\s(am)/
 			return true
 		elsif @arrival_time_at_classroom =~ /(08):(0{2})\s(am)/
@@ -121,7 +132,7 @@ class Student
 	end
 end	
 
-s1 = Student.new("Bob", "08:00 am")
+s1 = Student.new("Bob", "08:00 pm")
 puts s1.arrive_on_time_for_class?
 
 
