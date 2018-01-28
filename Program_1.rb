@@ -97,6 +97,32 @@ puts missing_num([])
 puts check_product?([1,2,6,8,10],120)
 puts concatenate_words("Saurabh", "Labde")
 puts valid_parantheses?("{()}")
-puts longest_common_prefix([])
+puts longest_common_prefix(["Saurabh","Simran"])
+
+class Student 
+	attr_accessor :name, :arrival_time_at_classroom
+	def initialize(name, arrival_time_at_classroom)
+		raise ArgumentError.new("Name must not be nil") if name == nil or name == " " 
+		raise ArgumentError.new("Arrival time must not be nil") if arrival_time_at_classroom == nil
+		raise ArgumentError.new("Arrival time not entered in the correct format") unless arrival_time_at_classroom =~ /(\d{2}:\d{2})\s(am|pm)/
+
+		@name = name
+		@arrival_time_at_classroom = arrival_time_at_classroom
+	end
+
+	def arrive_on_time_for_class?
+		if @arrival_time_at_classroom =~ /(0[1-7]):([0-9]{2})\s(am)/
+			return true
+		elsif @arrival_time_at_classroom =~ /(08):(0{2})\s(am)/
+			return true
+		else
+			return false
+		end
+	end
+end	
+
+s1 = Student.new("Bob", "08:00 am")
+puts s1.arrive_on_time_for_class?
+
 
 
