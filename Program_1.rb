@@ -58,22 +58,29 @@ def concatenate_words(w1,w2)
 	This function takes two inputs strings and concatenates the two strings and inserts a single space between them.
 
 	"""
-	return w1 << " " << w2
+	w1 << " " << w2
 end
 
-def valid_parantheses?(s)
+def valid_parentheses?(s)
 	"""
 	This function takes an input string which contains different types of brackets and returns true if the brackets are matched.
 
 	"""	
-	return false if s.length < 2
-    brackets_hash = {"(" => ")", "{" => "}", "[" => "]"}
-    brackets = []
-    s.each_char do |x|
-      brackets.push(x) if brackets_hash.keys.include?(x)
-      brackets.pop if brackets_hash.values.include?(x)
+    return false if s.length.odd?
+
+  	pairs = { '{' => '}', '[' => ']', '(' => ')' }
+
+  	s.chars.each_with_object([]) do |bracket, stack|
+    if pairs.keys.include?(bracket)
+      stack << bracket
+    elsif pairs.values.include?(bracket)
+      return false unless pairs[stack.pop] == bracket
+    else
+      return false
     end
-    return brackets.empty?
+  end
+
+  return true
 end
 
 def longest_common_prefix(s)
@@ -87,16 +94,6 @@ def longest_common_prefix(s)
   	return min[0...idx]
 end
 
-
-
-array = [1,2,3,4,5]
-double_elem([0,4,6,8,20])
-
-puts missing_num([])
-puts check_product?([1,2,6,8,10],120)
-puts concatenate_words("Saurabh", "Labde")
-puts valid_parantheses?("{()}")
-puts longest_common_prefix(["Saurabh","Simran"])
 
 class Student 
 	"""
@@ -131,9 +128,5 @@ class Student
 		end
 	end
 end	
-
-s1 = Student.new("Bob", "08:00 pm")
-puts s1.arrive_on_time_for_class?
-
 
 
