@@ -1,5 +1,5 @@
 
-load 'Program_1.rb'
+load 'ruby_intro_SS_sslabde_scheriy.rb'
 
 def scores
   correct = 0
@@ -8,21 +8,21 @@ def scores
 
   # Q1
   begin
-    double_elem([]) == [] ? correct += 1 : wrong += 1
+    double_elem([1,2,3]) == [2,4,6] ? correct += 1 : wrong += 1
   rescue StandardError
     wrong += 1
   end
 
   # Q2
   begin
-    missing_num([0, 2, 3]) == 1 ? correct += 1 : wrong += 1
+    missing_num([1,2,3,4,5,6,7,8,9,10]) == 0  ? correct += 1 : wrong += 1
   rescue StandardError
     wrong += 1
   end
 
   # Q3
   begin
-    check_product?([1, 2, 3], 6) == true ? correct += 1 : wrong += 1
+    check_product?([1,2,3,4,5,6],15) == true ? correct += 1 : wrong += 1
   rescue StandardError
     wrong += 1
   end
@@ -36,19 +36,19 @@ def scores
  
   # Q5
   begin
-    valid_parentheses?('{)') == false ? correct += 1 : wrong += 1
+    valid_parentheses?('{]') == false ? correct += 1 : wrong += 1
   rescue StandardError
     wrong += 1
  end
   # Q6
   begin
-    longest_common_prefix(%w[a aa abc]) == 'a' ? correct += 1 : wrong += 1
+    longest_common_prefix(%w[aaaaaaaa aa aabc]) == 'aa' ? correct += 1 : wrong += 1
   rescue StandardError
     wrong += 1
  end
   # Q7
   begin
-    s1 = Student.new('Bob', '08:12 am')
+    s1 = Student.new('Saurabh', "11:59 pm")
   rescue StandardError
     s1 = nil
   end
